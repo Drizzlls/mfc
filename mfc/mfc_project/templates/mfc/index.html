@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+<section class="header">
+    <div class="row justify-content-center" >
+        <div class="px-4 py-5 my-5 col-11 col-lg-6 header_block" >
+    <h2 class="fw-bold text-center">Законное списание долгов для физических лиц
+по Федеральной Программе!</h2>
+            <br>
+    <div>
+      <p class="lead mb-4">Поможем полностью списать Ваш долг за 6 месяцев с полным прекращением платежей в пользу кредиторов.</p>
+        <hr style="height:3px">
+    <div class="d-flex justify-content-between header_content">
+        <div>
+            <ul class="p-0" style="text-align:left">
+            <li> МФО</li>
+            <li> Потребительские кредиты</li>
+            <li> Кредитные карты</li>
+            <li> Долги по ЖКХ</li>
+        </ul></div>
+        <div class="flag_block">
+            <img src="{% static 'assets/img/flag.png' %}" alt="" width="100%">
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+    </div>
+
+
+
+
+</section>
+
+<section class="section_forms mt-5">
+
+    <div class="row justify-content-center text-center" >
+        <div class="col-6" >
+<h3 class="font-weight-normal">Заполните официальную заявку и узнайте, можно ли списать долги по Федеральной программе в Вашем случае!</h3>
+            <br>
+  </div>
+
+      <div class="row justify-content-center" >
+        <div class="px-4 py-5 my-5 col-lg-6 header_block col-11" >
+        <form action="{% url 'treatment' %}" class="row" method="post" id="Form">
+            {% csrf_token %}
+            <div class="col-6">
+                <img src="{% static 'assets/img/log.png' %}" alt="" class="mt-3">
+                <p class="mt-3 fw-bold">Оригинальный бланк заявителя</p>
+            </div>
+            <div class="col-6">
+<div>
+    <label for="name" class="form-label">Имя</label>
+    <input type="text" class="form-control" id="name" value="" name="name" required>
+  </div>
+<div>
+    <label for="phone" class="form-label">Номер телефона</label>
+    <input type="text" class="form-control" id="phone" value="" name="phone" required>
+  </div>
+            </div>
+            <hr class="mt-5">
+
+  <div class="block_input">
+    <label for="summa" class="form-label">Какая у Вас сумма долга?</label>
+    <select class="form-select" id="summa" name="summa" required>
+      <option selected value=""></option>
+      <option value="До 250 000 руб.">До 250 000 руб.</option>
+      <option value="От 300 000 руб. до 500 000 руб.">От 300 000 руб. до 500 000 руб. </option>
+      <option value="От 500 000 руб. до 1 000 000 руб.">От 500 000 руб. до 1 000 000 руб. </option>
+      <option value="От 1 000 000 руб. до 2 000 000 руб.">От 1 000 000 руб. до 2 000 000 руб. </option>
+      <option value="От 2 000 000 руб. до 3 000 000 руб.">От 2 000 000 руб. до 3 000 000 руб. </option>
+      <option value="Более 3 000 000 руб.">Более 3 000 000 руб. </option>
+
+    </select>
+
+  </div>
+  <div class="block_input">
+    <label for="vid" class="form-label">Какой вид кредита?</label>
+    <select class="form-select" id="vid" name="vid" required>
+      <option selected value=""></option>
+      <option value="МФО">МФО</option>
+      <option value="Потребительский">Потребительский</option>
+      <option value="Кредитная карта">Кредитная карта</option>
+      <option value="Долги по ЖКХ">Долги по ЖКХ</option>
+
+    </select>
+
+  </div>
+  <div class="block_input">
+    <label for="prosrochka" class="form-label">Есть ли у вас просрочки по кредитам?</label>
+    <select class="form-select" id="prosrochka" name="prosrochka" required>
+      <option selected value=""></option>
+      <option value="Да">Да</option>
+      <option value="Нет">Нет</option>
+    </select>
+
+  </div>
+  <div class="block_input">
+    <label for="kreditori" class="form-label">Количество кредиторов?</label>
+    <input type="number" class="form-control" id="kreditori" value="" name="kreditori" required>
+  </div>
+  <div class="block_input">
+    <label for="usluga" class="form-label">Какой вид услуги Вы рассматриваете?</label>
+    <select class="form-select" id="usluga" name="usluga" required>
+      <option selected value=""></option>
+      <option value="Помощь в прекращении платежей по кредитам">Помощь в прекращении платежей по кредитам</option>
+      <option value="Полное списание долгов">Полное списание долгов</option>
+      <option value="Банкротство">Банкротство</option>
+      <option value="Реструктуризация / Рефинансирование">Реструктуризация / Рефинансирование</option>
+    </select>
+
+  </div>
+<div><button class="btn btn-primary">Отправить заявку</button></div>
+
+    </form>
+    </div>
+  </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
+</section>
+</body>
+
+<style>
+    li {
+    color:#214133;
+    list-style-type: none;
+    font-size:19px;
+}
+li::before {
+    content: "—";
+    height:30px;
+    color:#0755CA;
+}
+
+ul{
+text-align:left
+}
+
+.header_content{
+    position:relative;
+    height: 150px;
+}
+
+.header_content .flag_block{
+    position: absolute;
+    right: -1em;
+    top:-5em
+}
+
+.header_block{
+    box-shadow:0px 5px 15px 0px rgb(0 0 0 / 10%);
+}
+
+h1 ,h2 ,h3{
+    font-size: 25px;
+    color: rgb(7, 85, 202);
+}
+
+.block_input select, input{
+    width: 50%;
+}
+.block_input input{
+    width: 50%;
+}
+.block_input{
+    margin: 1em 0 1.7em 0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 19px
+}
+
+.btn{
+margin:1em 0 0 0;
+font-size:1.2em;
+padding:0.8em;
+}
+
+
+</style>
+
+<style>
+
+@media screen and (min-width: 100px) and (max-width:800px){
+.flag_block { display:none }
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+      b = $(".swal2-actions").css("display","none")
+    $(document).ready(function () {
+        $('#Form').submit(function () {
+            $.ajax({
+                data: $(this).serialize(),
+                type: $(this).attr('method'),
+                url: '{% url 'treatment' %}',
+                beforeSend: function() {
+                    Swal.fire({
+    title: "Заявка отправляется",
+    text: "Пожалуйста, подождите",
+    imageUrl: "https://www.epgdlaw.com/wp-content/uploads/2017/09/ajax-loader.gif",
+    showConfirmButton: false,
+    allowOutsideClick: false
+  });
+                   $(".swal2-actions").css("display","none")
+                },
+                success: function (response) {
+                if (response == "True") {
+                window.location.href = '{% url 'thsDo' %}';
+                } else {
+                window.location.href = '{% url 'thsPosle' %}'; }
+                },
+            });
+            return false;
+        });
+    })
+</script>
+</html>
