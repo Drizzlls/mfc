@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from bitrix24 import *
+import time
 
 
 def index(request):
-    return render(request,'mfc/index.html')
+    utm = {
+            "utm_source": request.GET.get('utm_source', ' '),
+            "utm_medium": request.GET.get('utm_medium', ' '),
+            "utm_content": request.GET.get('utm_content', ' '),
+            "utm_campaign": request.GET.get('utm_campaign', ' '),
+            "utm_term": request.GET.get('utm_term', ' '),
+        }
+    return render(request, 'mfc/index.html', {'utm': utm})
 
 def treatment(request):
     if request.POST:
@@ -18,14 +26,14 @@ def treatment(request):
             'UF_CRM_1625646672': request.POST.get('prosrochka', ''),
             'UF_CRM_1600427611284': request.POST.get('vid', ''),
             'UF_CRM_1600427658497': request.POST.get('kreditori', ''),
-            'UF_CRM_5F649955DE13E': request.POST.get('usluga', ''),
+            'UF_CRM_1664355340': request.POST.get('usluga', ''),
             "PHONE": [{"VALUE": f"{request.POST.get('phone', '')}", "VALUE_TYPE": "WORK"}],
             'NAME': request.POST['name'],
-            "UTM_SOURCE": request.GET.get('utm_source', ''),
-            "UTM_MEDIUM": request.GET.get('utm_medium', ''),
-            "UTM_CONTENT": request.GET.get('utm_content', ''),
-            "UTM_CAMPAIGN": request.GET.get('utm_campaign', ''),
-            "UTM_TERM": request.GET.get('utm_term', ''),
+            "UTM_SOURCE": request.POST.get('utm_source', ''),
+            "UTM_MEDIUM": request.POST.get('utm_medium', ''),
+            "UTM_CONTENT": request.POST.get('utm_content', ''),
+            "UTM_CAMPAIGN": request.POST.get('utm_campaign', ''),
+            "UTM_TERM": request.POST.get('utm_term', ''),
         }
         addLead = b.callMethod("crm.lead.add", fields=fields)
         if request.POST['summa'] == 'До 250 000 руб.':
